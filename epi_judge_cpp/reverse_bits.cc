@@ -1,7 +1,20 @@
 #include "test_framework/generic_test.h"
 unsigned long long ReverseBits(unsigned long long x) {
   // TODO - you fill in here.
-  return 0;
+  long long result = 0, count = 64;
+
+  while(count){
+
+    result += (x & 1);
+
+    count--;
+    x>>=1;
+
+    if(count){
+      result<<=1;
+    }
+  }
+  return result;
 }
 
 int main(int argc, char* argv[]) {

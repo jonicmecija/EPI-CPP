@@ -10,6 +10,8 @@ long long SwapBits(long long x, int i, int j) {
   temp_j = (x >> j) & 1;
 
   if(temp_i != temp_j){
+    // to get bit mask, shift from the left i or j times. OR them together.
+    // XOR bit mask and input to swap the bits
     unsigned long long bit_mask = (1L << i) | (1L << j);
     x ^= bit_mask;
   } 
