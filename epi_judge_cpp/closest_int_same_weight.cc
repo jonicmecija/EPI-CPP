@@ -1,7 +1,22 @@
 #include "test_framework/generic_test.h"
 unsigned long long ClosestIntSameBitCount(unsigned long long x) {
   // TODO - you fill in here.
-  return 0;
+
+  // iterate thru x
+  for(int i = 0; i<64; i++){
+
+    if((x >> i & 1) != ((x >> (i + 1)) & 1)){
+      x ^= (1UL << i) | (1UL << (i + 1));
+      return x;
+    }
+  }
+    // if two lowest bits differ
+      // swap them
+      // return updated x
+  
+  // 
+  // return smallestBit;
+  throw std::invalid_argument("all bits are 0 or 1.");
 }
 
 int main(int argc, char* argv[]) {
