@@ -3,20 +3,32 @@ unsigned long long ClosestIntSameBitCount(unsigned long long x) {
   // TODO - you fill in here.
 
   // iterate thru x
-  for(int i = 0; i<64; i++){
+  // for(int i = 0; i<64; i++){
 
-    if((x >> i & 1) != ((x >> (i + 1)) & 1)){
-      x ^= (1UL << i) | (1UL << (i + 1));
-      return x;
-    }
-  }
-    // if two lowest bits differ
-      // swap them
-      // return updated x
+  //   if((x >> i & 1) != ((x >> (i + 1)) & 1)){
+  //     x ^= (1UL << i) | (1UL << (i + 1));
+  //     return x;
+  //   }
+  // }
+  //   // if two lowest bits differ
+  //     // swap them
+  //     // return updated x
   
-  // 
-  // return smallestBit;
-  throw std::invalid_argument("all bits are 0 or 1.");
+  // // 
+  // // return smallestBit;
+  // throw std::invalid_argument("all bits are 0 or 1.");
+
+  int lowestSet = x & ~(x-1);
+  int lowestNotSet = ~x & (x+1);
+  if (lowestNotSet>lowestSet){
+    x|=lowestNotSet;
+    x^=lowestNotSet>>1;
+  }else{
+    x^=lowestSet;
+  x|=lowestSet>>1;
+  }
+  
+  return x;
 }
 
 int main(int argc, char* argv[]) {
