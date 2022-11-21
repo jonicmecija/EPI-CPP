@@ -1,11 +1,26 @@
 #include <string>
+#include <unordered_map>
 
 #include "test_framework/generic_test.h"
 using std::string;
 
 bool CanFormPalindrome(const string& s) {
-  // TODO - you fill in here.
-  return true;
+  // use unordered set
+
+  // store each character, remove everytime you see same character
+
+  std::unordered_set <char> mySet;
+  
+  for(char c : s){
+    if(mySet.count(c)){
+      mySet.erase(c);
+    }
+    else{
+      mySet.insert(c);
+    }
+  }
+
+  return mySet.size() <= 1;
 }
 
 int main(int argc, char* argv[]) {
